@@ -17,6 +17,7 @@ get() = 1270
 ## Languages
 
 - Bash (bash)
+    - curl: `apt-get install curl`
 - JavaScript (node)
 - PHP (php)
 - Python (python)
