@@ -16,5 +16,6 @@ get() = 1270
 
 ## Languages
 
+- Bash (bash)
 - JavaScript (node)
 - PHP (php)
