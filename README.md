@@ -19,3 +19,4 @@ get() = 1270
 - Bash (bash)
 - JavaScript (node)
 - PHP (php)
+- Python (python)
