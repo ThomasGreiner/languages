@@ -16,6 +16,8 @@ get() = 1270
 
 ## Languages
 
+- C++ (g++)
+    - libcurl: `apt-get install libcurl4-openssl-dev`
 - Bash (bash)
     - curl: `apt-get install curl`
 - JavaScript (node)
