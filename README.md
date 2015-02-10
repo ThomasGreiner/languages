@@ -20,7 +20,7 @@ get() = 1270
     - libcurl: `apt-get install libcurl4-openssl-dev`
 - Bash (bash)
     - curl: `apt-get install curl`
-- Java (java)
+- Java (javac, jar)
 - JavaScript (node)
 - PHP (php)
 - Python (python)
