@@ -39,4 +39,4 @@ end
 puts "fac(#{arg}) = #{fac(arg)}"
 puts "fib(#{arg}) = #{fib(arg)}"
 puts "read() = #{read('data/file.txt')}"
-puts "get() = #{get('https://example.org/')}"
+puts "get() = #{get('https://example.com/')}"
