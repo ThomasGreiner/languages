@@ -22,6 +22,7 @@ get() = 1270
     - curl: `apt-get install curl`
 - Java (javac, jar)
 - JavaScript (node)
+- Perl (perl)
 - PHP (php)
 - Python (python)
 - Ruby (ruby)
