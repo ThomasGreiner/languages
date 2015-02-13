@@ -23,6 +23,7 @@ get() = 1270
 - Go (go)
 - Java (javac, jar)
 - JavaScript (node)
+- Pascal (pc)
 - Perl (perl)
 - PHP (php)
 - Python (python)
