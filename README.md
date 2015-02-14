@@ -21,6 +21,9 @@ get() = 1270
 - Bash (bash)
     - curl: `apt-get install curl`
 - Go (go)
+- Haskell (ghc)
+    - cabal: `apt-get install cabal-install`
+    - http: `cabal update && cabal install http`
 - Java (javac, jar)
 - JavaScript (node)
 - Pascal (pc)
