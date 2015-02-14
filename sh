@@ -23,13 +23,11 @@ fib() {
 }
 
 read() {
-  local content=$(cat $1)
-  echo ${#content}
+  echo $(cat $1 | wc -m)
 }
 
 get() {
-  local content=$(curl -s $1)
-  echo ${#content}
+  echo $(curl -s $1 | wc -m)
 }
 
 if [[ $1 -lt 0 ]]
