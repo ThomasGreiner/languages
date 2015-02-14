@@ -24,6 +24,7 @@ get() = 1270
 - Java (javac, jar)
 - JavaScript (node)
 - Pascal (pc)
+    - fcl-web: `apt-get install fp-units-fcl`
 - Perl (perl)
 - PHP (php)
 - Python (python)
