@@ -26,6 +26,7 @@ get() = 1270
     - http: `cabal update && cabal install http`
 - Java (javac, jar)
 - JavaScript (node)
+- Lua (lua)
 - Pascal (pc)
     - fcl-web: `apt-get install fp-units-fcl`
 - Perl (perl)
