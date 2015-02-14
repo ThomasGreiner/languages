@@ -66,5 +66,6 @@ begin
   WriteLn('fac(', Arg, ') = ', Fac(Arg));
   WriteLn('fib(', Arg, ') = ', Fib(Arg));
   WriteLn('read() = ', Read('data/file.txt'));
+  // TODO: implement HTTPS request
   WriteLn('get() = ', Get('http://example.com/'));
 end.
