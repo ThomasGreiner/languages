@@ -16,6 +16,8 @@ get() = 1270
 
 ## Languages
 
+- Befunge (bef)
+    - bef: `git clone https://github.com/catseye/Befunge-93.git lib/Befunge-93 && cd lib/Befunge-93 && make`
 - C++ (g++)
     - libcurl: `apt-get install libcurl4-openssl-dev`
 - Bash (bash)
