@@ -16,6 +16,8 @@ get() = 1270
 
 ## Languages
 
+- Assembly (nasm, gcc)
+    - Linux 64-bit
 - Befunge (bef)
     - bef: `git clone https://github.com/catseye/Befunge-93.git lib/Befunge-93 && cd lib/Befunge-93 && make`
 - C++ (g++)
