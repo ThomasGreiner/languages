@@ -37,9 +37,9 @@ if (arg < 0) {
   process.exit(1);
 }
 
-console.log("fac(%s) = %s", arg, fac(arg));
-console.log("fib(%s) = %s", arg, fib(arg));
-console.log("read() = %s", read("data/file.txt"));
+console.log("fac(%d) = %d", arg, fac(arg));
+console.log("fib(%d) = %d", arg, fib(arg));
+console.log("read() = %d", read("data/file.txt"));
 get("https://example.com/", function(len) {
-  console.log("get() = %s", len);
+  console.log("get() = %d", len);
 });
