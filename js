@@ -21,12 +21,12 @@ function read(path) {
 
 function get(url, callback) {
   require("https").get(url, function(resp) {
-    var body = "";
+    var len = 0;
     resp.on("data", function(buf) {
-      body += buf.toString();
+      len += buf.length;
     });
     resp.on("end", function() {
-      callback(body.length);
+      callback(len);
     });
   });
 }
