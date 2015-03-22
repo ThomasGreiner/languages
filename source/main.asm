@@ -8,12 +8,11 @@ section .data
   sys_exit equ 1
   sys_write equ 4
   
-  dummy equ -1
-  
-  msg_fac db "fac(%d) = %d", 10, 0
   msg_error_num db "Expected exactly one argument", 10, 0
   msg_error_num_L equ $ - msg_error_num
   msg_error_neg db "Negative number: %d", 10, 0
+  msg_fac db "fac(%d) = %d", 10, 0
+  msg_fib db "fib(%d) = %d", 10, 0
 
 section .text
   main:
@@ -25,20 +24,95 @@ section .text
     mov rdi, [rsi + 8]
     call atoi
     
-    ; check for arg < 0
+    ; check for arg < 0 (works for integers < 0x80)
     push rax
     test rax, 0x80
     jne .write_error_neg
     pop rax
     
-    call .write_fac
+    call .fac_init
+    call .fib_init
     call .exit_success
   
+  ; rax: input
+  ; rbx; output
+  ; rcx: counter
+  .fac_init:
+    mov rbx, 1
+    mov rcx, rax
+    
+    jmp .fac_next
+  
+  .fac_next:
+    ; if counter < 2
+    cmp rcx, 2
+    jl .write_fac
+    
+    ; output *= counter
+    push rax
+    mov rax, rcx
+    mul rbx
+    mov rbx, rax
+    pop rax
+    
+    ; counter--
+    dec rcx
+    
+    jmp .fac_next
+  
   .write_fac:
-    mov rdx, dummy
+    push rax
+    
+    mov rdx, rbx
     mov rsi, rax
     mov rdi, msg_fac
+    
+    xor rax, rax ; required to push/pop rax
     call printf
+    
+    pop rax
+    ret
+  
+  ; rax: input
+  ; rbx: output
+  ; rcx: previous
+  ; rdx: counter
+  .fib_init:
+    mov rbx, 1
+    mov rcx, 1
+    mov rdx, rax
+    
+    jmp .fib_next
+  
+  .fib_next:
+    ; if counter < 3
+    cmp rdx, 3
+    jl .write_fib
+    
+    ; increment previous and current values
+    push rax
+    mov rax, rbx
+    mov rbx, rcx
+    mov rcx, rax
+    pop rax
+    add rbx, rcx
+    
+    ; counter--
+    dec rdx
+    
+    jmp .fib_next
+  
+  .write_fib:
+    push rax
+    
+    mov rdx, rbx
+    mov rsi, rax
+    mov rdi, msg_fib
+    
+    xor rax, rax ; required to push/pop rax
+    call printf
+    
+    pop rax
     ret
   
   .write_error_num:
