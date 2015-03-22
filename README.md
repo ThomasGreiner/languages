@@ -16,6 +16,8 @@ get() = 1270
 
 ## Languages
 
+Note: Unless otherwise noted, the following requirements are for running within an Ubuntu environment.
+
 - Assembly (nasm, gcc)
     - Linux 64-bit
 - Bash (bash)
@@ -37,3 +39,5 @@ get() = 1270
 - PHP (php)
 - Python (python)
 - Ruby (ruby)
+- VBScript (cscript)
+    - Windows
