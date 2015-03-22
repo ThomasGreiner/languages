@@ -32,7 +32,7 @@ section .text
     
     call .fac_init
     call .fib_init
-    call .exit_success
+    jmp .exit_success
   
   ; rax: input
   ; rbx; output
@@ -122,14 +122,14 @@ section .text
     mov rdx, msg_error_num_L
     int 0x80
     
-    call .exit_error
+    jmp .exit_error
   
   .write_error_neg:
     mov rsi, rax
     mov rdi, msg_error_neg
     call printf
     
-    call .exit_error
+    jmp .exit_error
   
   .exit_error:
     mov rax, sys_exit
