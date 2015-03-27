@@ -26,7 +26,7 @@ public class Main {
     return content.toString().length();
   }
   
-  private static long fac(int num) {
+  private static long fac(long num) {
     if (num < 2) {
       return 1;
     }
@@ -34,7 +34,7 @@ public class Main {
     return num * fac(num - 1);
   }
   
-  private static long fib(int num) {
+  private static long fib(long num) {
     if (num < 3) {
       return 1;
     }
@@ -68,7 +68,7 @@ public class Main {
   
   public static void main(String[] args)
   throws IllegalArgumentException {
-    int arg = Integer.parseInt(args[0]);
+    long arg = Long.parseLong(args[0]);
     
     if (arg < 0) {
       throw new IllegalArgumentException("Negative number: " + arg);
