@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 require "net/http"
 
 def fac(num)

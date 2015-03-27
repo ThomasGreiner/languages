@@ -1,5 +1,3 @@
-#!/usr/bin/env perl
-
 use LWP::Simple;
 
 sub Fac {

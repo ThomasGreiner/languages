@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 function fac(num) {
   if (num < 2)
     return 1;

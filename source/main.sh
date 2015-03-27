@@ -1,5 +1,3 @@
-#!/bin/bash
-
 fac() {
   if [[ $1 -lt 2 ]]
   then

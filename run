@@ -1,0 +1,105 @@
+#!/bin/bash
+
+lang=$1
+arg=$2
+
+usage() {
+cat << EOF
+Usage: $0 <language> <integer>
+
+LANGUAGES:
+  asm   Assembly
+  bf    Befunge
+  cpp   C++
+  cs    C#
+  go    Go
+  hs    Haskell
+  java  Java
+  js    JavaScript
+  lua   Lua
+  pas   Pascal
+  php   PHP
+  pl    Perl
+  py    Python
+  rb    Ruby
+  sh    Bash
+  vbs   VBScript
+EOF
+}
+
+if [ $# = 0 ]
+then
+  usage
+  exit 1
+fi
+
+case $lang in
+  asm)
+    mkdir -p tmp
+    nasm -f elf64 -o tmp/main.o source/main.asm
+    gcc -o bin/asm tmp/main.o
+    bin/asm $arg
+    ;;
+  bf)
+    lib/Befunge-93/bin/bef -q $arg source/main
+    ;;
+  cpp)
+    mkdir -p bin
+    g++ source/main.cpp -o bin/cpp -lcurl
+    mkdir -p tmp
+    bin/cpp $arg
+    ;;
+  cs)
+    mkdir -p bin
+    mcs -out:bin/cs source/main.cs
+    bin/cs $arg
+    ;;
+  go)
+    go run source/main.go $arg
+    ;;
+  hs)
+    mkdir -p bin tmp
+    ghc source/main.hs -odir tmp -hidir tmp -o bin/hs > /dev/null
+    bin/hs $arg
+    ;;
+  java)
+    mkdir -p tmp
+    javac -d tmp source/Main.java
+    mkdir -p bin
+    cd tmp
+    jar cvfe ../bin/java Main *.class > /dev/null
+    rm *.class
+    cd ..
+    chmod +x bin/java
+    bin/java $arg
+    ;;
+  js)
+    node source/main.js $arg
+    ;;
+  lua)
+    lua source/main.lua $arg
+    ;;
+  pas)
+    mkdir -p tmp bin
+    pc -S2 -FUtmp -FEbin -opas source/main.pas > /dev/null 2> /dev/null
+    bin/pas $arg
+    ;;
+  php)
+    php source/main.php $arg
+    ;;
+  pl)
+    perl source/main.pl $arg
+    ;;
+  py)
+    python source/main.py $arg
+    ;;
+  rb)
+    ruby source/main.rb $arg
+    ;;
+  sh)
+    bash source/main.sh $arg
+    ;;
+  vbs)
+    echo "Run \`cscript source/main.vbs $arg\` under Windows"
+    ;;
+esac

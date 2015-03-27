@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import sys, urllib2
 
 def fac(num):

@@ -1,5 +1,3 @@
-#!/usr/bin/env php
-
 <?php
 function fac($num) {
   if ($num < 2)
