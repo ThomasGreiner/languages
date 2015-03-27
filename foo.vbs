@@ -1,29 +1,37 @@
 Dim arg
 
-Function fac(num)
+Function Fac(num)
   If num < 2 Then
-    fac = 1
+    Fac = 1
     Exit Function
   End If
   
-  fac = num * fac(num - 1)
+  Fac = num * Fac(num - 1)
 End Function
 
-Function fib(num)
+Function Fib(num)
   If num < 3 Then
-    fib = 1
+    Fib = 1
     Exit Function
   End If
   
-  fib = fib(num - 1) + fib(num - 2)
+  Fib = Fib(num - 1) + Fib(num - 2)
 End Function
 
-Function read(path)
-  read = -1
+Function Read(path)
+  Dim fso, file
+  Set fso = CreateObject("Scripting.FileSystemObject")
+  Set file = fso.OpenTextFile(path, 1)
+  Read = Len(file.ReadAll())
+  file.Close()
 End Function
 
-Function open(url)
-  open = -1
+Function Open(url)
+  Dim xhr
+  Set xhr = CreateObject("MSXML2.XMLHTTP")
+  xhr.Open "GET", url, false
+  xhr.Send()
+  Open = Len(xhr.ResponseText)
 End Function
 
 arg = WScript.Arguments.Item(0)
@@ -32,7 +40,7 @@ If arg < 0 Then
   WScript.Quit(1) ' echo %errorlevel%
 End If
 
-Wscript.Echo("fac(" & arg & ") = " & fac(arg))
-Wscript.Echo("fib(" & arg & ") = " & fib(arg))
-Wscript.Echo("read() = " & read("data/file.txt"))
-Wscript.Echo("open() = " & open("https://example.com/"))
+Wscript.Echo("Fac(" & arg & ") = " & Fac(arg))
+Wscript.Echo("Fib(" & arg & ") = " & Fib(arg))
+Wscript.Echo("Read() = " & Read("data/file.txt"))
+Wscript.Echo("Open() = " & Open("https://example.com/"))
