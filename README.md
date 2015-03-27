@@ -26,6 +26,7 @@ Note: Unless otherwise noted, the following requirements are for running within 
     - bef: `git clone https://github.com/catseye/Befunge-93.git lib/Befunge-93 && cd lib/Befunge-93 && make`
 - C++ (g++)
     - libcurl: `apt-get install libcurl4-openssl-dev`
+- C# (mcs)
 - Go (go)
 - Haskell (ghc)
     - cabal: `apt-get install cabal-install`
