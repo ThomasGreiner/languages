@@ -10,9 +10,9 @@ section .data
   
   msg_error_num db "Expected exactly one argument", 10, 0
   msg_error_num_L equ $ - msg_error_num
-  msg_error_neg db "Negative number: %d", 10, 0
-  msg_fac db "fac(%d) = %d", 10, 0
-  msg_fib db "fib(%d) = %d", 10, 0
+  msg_error_neg db "Negative number: %ld", 10, 0
+  msg_fac db "fac(%ld) = %ld", 10, 0
+  msg_fib db "fib(%ld) = %ld", 10, 0
 
 section .text
   main:
