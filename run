@@ -37,6 +37,7 @@ case $lang in
   asm)
     mkdir -p tmp
     nasm -f elf64 -o tmp/main.o source/main.asm
+    mkdir -p bin
     gcc -o bin/asm tmp/main.o
     bin/asm $arg
     ;;
