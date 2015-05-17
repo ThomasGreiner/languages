@@ -22,6 +22,7 @@ LANGUAGES:
   pl    Perl
   py    Python
   rb    Ruby
+  rs    Rust
   sh    Bash
   vbs   VBScript
 EOF
@@ -96,6 +97,11 @@ case $lang in
     ;;
   rb)
     ruby source/main.rb $arg
+    ;;
+  rs)
+    mkdir -p bin
+    rustc -L lib/hyper/target/debug -L lib/hyper/target/debug/deps -o bin/rs source/main.rs
+    bin/rs $arg
     ;;
   sh)
     bash source/main.sh $arg

@@ -40,5 +40,10 @@ Note: Unless otherwise noted, the following requirements are for running within 
 - PHP (php)
 - Python (python)
 - Ruby (ruby)
+- Rust (rustc)
+    - cargo
+    - libssl-dev: `apt-get install libssl-dev`
+    - hyper: dependency needs to be resolved manually to avoid [Cargo conventions](http://doc.crates.io/guide.html#cargo-conventions)
+    `git clone https://github.com/hyperium/hyper lib/hyper && cd lib/hyper && git checkout tags/v0.5.0 && cargo build`
 - VBScript (cscript)
     - Windows
