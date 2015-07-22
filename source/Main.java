@@ -26,12 +26,12 @@ public class Main {
     return content.toString().length();
   }
   
-  private static long getFaculty(long num) {
+  private static long getFactorial(long num) {
     if (num < 2) {
       return 1;
     }
     
-    return num * getFaculty(num - 1);
+    return num * getFactorial(num - 1);
   }
   
   private static long getFibonacci(long num) {
@@ -74,7 +74,7 @@ public class Main {
       throw new IllegalArgumentException("Negative number: " + arg);
     }
     
-    System.out.println("fac(" + arg + ") = " + getFaculty(arg));
+    System.out.println("fac(" + arg + ") = " + getFactorial(arg));
     System.out.println("fib(" + arg + ") = " + getFibonacci(arg));
     System.out.println("read() = " + getFileContentLength("data/file.txt"));
     System.out.println("get() = " + getHttpContentLength("https://example.com/"));

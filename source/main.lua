@@ -1,11 +1,11 @@
 #!/usr/bin/env lua
 
-function get_faculty(num)
+function get_factorial(num)
   if num < 2 then
     return 1
   end
   
-  return num * get_faculty(num - 1)
+  return num * get_factorial(num - 1)
 end
 
 function get_fibonacci(num)
@@ -34,7 +34,7 @@ if num < 0 then
   os.exit(1)
 end
 
-print("fac("..num..") = "..get_faculty(num))
+print("fac("..num..") = "..get_factorial(num))
 print("fib("..num..") = "..get_fibonacci(num))
 print("read() = "..get_file_content_length("data/file.txt"))
 print("open() = "..get_http_content_length("https://example.com/"))

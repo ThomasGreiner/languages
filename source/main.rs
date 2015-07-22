@@ -7,12 +7,12 @@ use std::fs::File;
 use std::io::Read;
 use std::process;
 
-fn get_faculty(num: isize) -> isize {
+fn get_factorial(num: isize) -> isize {
   let ord = num.cmp(&2);
   if ord == Ordering::Less {
     return 1;
   } else {
-    return num * get_faculty(num - 1);
+    return num * get_factorial(num - 1);
   }
 }
 
@@ -61,7 +61,7 @@ fn main() {
     process::exit(1);
   }
   
-  println!("fac({0:?}) = {1:}", arg, get_faculty(arg));
+  println!("fac({0:?}) = {1:}", arg, get_factorial(arg));
   println!("fib({0:?}) = {1:}", arg, get_fibonacci(arg));
   println!("read() = {0:}", get_file_content_length("data/file.txt"));
   println!("get() = {0:}", get_http_content_length("https://example.com/"));

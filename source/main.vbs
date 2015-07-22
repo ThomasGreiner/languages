@@ -1,12 +1,12 @@
 Dim arg
 
-Function GetFaculty(num)
+Function GetFactorial(num)
   If num < 2 Then
-    GetFaculty = 1
+    GetFactorial = 1
     Exit Function
   End If
   
-  GetFaculty = num * GetFaculty(num - 1)
+  GetFactorial = num * GetFactorial(num - 1)
 End Function
 
 Function GetFibonacci(num)
@@ -40,7 +40,7 @@ If arg < 0 Then
   WScript.Quit(1) ' echo %errorlevel%
 End If
 
-Wscript.Echo("Fac(" & arg & ") = " & GetFaculty(arg))
+Wscript.Echo("Fac(" & arg & ") = " & GetFactorial(arg))
 Wscript.Echo("Fib(" & arg & ") = " & GetFibonacci(arg))
 Wscript.Echo("Read() = " & GetFileContentLength("data/file.txt"))
 Wscript.Echo("Open() = " & GetHttpContentLength("https://example.com/"))

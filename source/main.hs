@@ -2,10 +2,10 @@ import Network.HTTP
 import System.Environment
 import System.Exit
 
-getFaculty ::Integer -> Integer
-getFaculty(num)
+getFactorial ::Integer -> Integer
+getFactorial(num)
   | num < 2 = 1
-  | num >= 2 = num * getFaculty(num - 1)
+  | num >= 2 = num * getFactorial(num - 1)
 
 getFibonacci ::Integer -> Integer
 getFibonacci(num)
@@ -31,7 +31,7 @@ main = do
     putStrLn("Negative number: " ++ arg)
     exitWith(ExitFailure(1))
   else do
-    putStrLn("fac() = " ++ show(getFaculty(read(arg) :: Integer)))
+    putStrLn("fac() = " ++ show(getFactorial(read(arg) :: Integer)))
     putStrLn("fib() = " ++ show(getFibonacci(read(arg) :: Integer)))
     len <- getFileContentLength("data/file.txt")
     putStrLn("read() = " ++ show(len))

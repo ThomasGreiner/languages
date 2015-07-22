@@ -1,10 +1,10 @@
 import sys, urllib2
 
-def get_faculty(num):
+def get_factorial(num):
   if num < 2:
     return 1
   
-  return num * get_faculty(num - 1)
+  return num * get_factorial(num - 1)
 
 def get_fibonacci(num):
   if (num < 3):
@@ -25,7 +25,7 @@ if arg < 0:
   print "Negative number: %d" % arg
   exit(1)
 
-print "fac(%d) = %d" % (arg, get_faculty(arg))
+print "fac(%d) = %d" % (arg, get_factorial(arg))
 print "fib(%d) = %d" % (arg, get_fibonacci(arg))
 print "read() = %s" % get_file_content_length("data/file.txt")
 print "get() = %s" % get_http_content_length("https://example.com/")

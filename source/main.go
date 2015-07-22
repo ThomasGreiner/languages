@@ -8,12 +8,12 @@ import (
   "strconv"
 )
 
-func getFaculty(num int) int {
+func getFactorial(num int) int {
   if (num < 2) {
     return 1
   }
   
-  return num * getFaculty(num - 1)
+  return num * getFactorial(num - 1)
 }
 
 func getFibonacci(num int) int {
@@ -43,7 +43,7 @@ func main() {
     os.Exit(1)
   }
   
-  fmt.Printf("fac(%d) = %d\n", arg, getFaculty(arg))
+  fmt.Printf("fac(%d) = %d\n", arg, getFactorial(arg))
   fmt.Printf("fib(%d) = %d\n", arg, getFibonacci(arg))
   fmt.Printf("read() = %d\n", getFileContentLength("data/file.txt"))
   fmt.Printf("get() = %d\n", getHttpContentLength("https://example.com/"))

@@ -1,12 +1,12 @@
 use LWP::Simple;
 
-sub get_faculty {
+sub get_factorial {
   my $num = $_[0];
   if ($num < 2) {
     return 1;
   }
   
-  return $num * get_faculty($num - 1);
+  return $num * get_factorial($num - 1);
 }
 
 sub get_fibonacci {
@@ -40,7 +40,7 @@ if ($arg < 0) {
   exit 1;
 }
 
-print "fac($arg) = @{[get_faculty($arg)]}\n";
+print "fac($arg) = @{[get_factorial($arg)]}\n";
 print "fib($arg) = @{[get_fibonacci($arg)]}\n";
 print "read() = @{[get_file_content_length('data/file.txt')]}\n";
 print "get() = @{[get_http_content_length('https://example.com/')]}\n";

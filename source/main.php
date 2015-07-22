@@ -1,9 +1,9 @@
 <?php
-function get_faculty($num) {
+function get_factorial($num) {
   if ($num < 2)
     return 1;
   
-  return $num * get_faculty($num - 1);
+  return $num * get_factorial($num - 1);
 }
 
 function get_fibonacci($num) {
@@ -23,7 +23,7 @@ if ($arg < 0) {
   exit(1);
 }
 
-echo "fac($arg) = ".get_faculty($arg)."\n";
+echo "fac($arg) = ".get_factorial($arg)."\n";
 echo "fib($arg) = ".get_fibonacci($arg)."\n";
 echo "read() = ".get_file_content_length("data/file.txt")."\n";
 echo "get() = ".get_file_content_length("https://example.com/")."\n";

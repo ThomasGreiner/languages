@@ -7,12 +7,12 @@
 
 using namespace std;
 
-unsigned long getFaculty(int num) {
+unsigned long getFactorial(int num) {
   if (num < 2) {
     return 1;
   }
   
-  return num * getFaculty(num - 1);
+  return num * getFactorial(num - 1);
 }
 
 unsigned long getFibonacci(int num) {
@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
     return 1;
   }
   
-  cout << "fac(" << arg << ") = " << getFaculty(arg) << endl;
+  cout << "fac(" << arg << ") = " << getFactorial(arg) << endl;
   cout << "fib(" << arg << ") = " << getFibonacci(arg) << endl;
   cout << "read() = " << getFileContentLength("data/file.txt") << endl;
   cout << "get() = " << getHttpContentLength("https://example.com/") << endl;

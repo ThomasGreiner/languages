@@ -3,12 +3,12 @@ using System.IO;
 using System.Net;
 
 class MainClass {
-  private static long GetFaculty(long num) {
+  private static long GetFactorial(long num) {
     if (num < 2) {
       return 1;
     }
     
-    return num * GetFaculty(num - 1);
+    return num * GetFactorial(num - 1);
   }
   
   private static long GetFibonacci(long num) {
@@ -42,7 +42,7 @@ class MainClass {
       throw new ArgumentException(string.Format("Negative number: {0}", arg));
     }
     
-    Console.WriteLine("fac({0}) = {1}", arg, GetFaculty(arg));
+    Console.WriteLine("fac({0}) = {1}", arg, GetFactorial(arg));
     Console.WriteLine("bib({0}) = {1}", arg, GetFibonacci(arg));
     Console.WriteLine("read() = {0}", GetFileContentLength("data/file.txt"));
     Console.WriteLine("get() = {0}", GetHttpContentLength("https://www.example.com/"));

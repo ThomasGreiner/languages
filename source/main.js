@@ -1,8 +1,8 @@
-function getFaculty(num) {
+function getFactorial(num) {
   if (num < 2)
     return 1;
   
-  return num * getFaculty(num - 1);
+  return num * getFactorial(num - 1);
 }
 
 function getFibonacci(num) {
@@ -35,7 +35,7 @@ if (arg < 0) {
   process.exit(1);
 }
 
-console.log("fac(%d) = %d", arg, getFaculty(arg));
+console.log("fac(%d) = %d", arg, getFactorial(arg));
 console.log("fib(%d) = %d", arg, getFibonacci(arg));
 console.log("read() = %d", getFileContentLength("data/file.txt"));
 getHttpContentLength("https://example.com/", function(len) {

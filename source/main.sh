@@ -1,11 +1,11 @@
-get_faculty() {
+get_factorial() {
   if [[ $1 -lt 2 ]]
   then
     echo 1
     exit
   fi
   
-  echo $(($1 * $(get_faculty $(($1 - 1)))))
+  echo $(($1 * $(get_factorial $(($1 - 1)))))
 }
 
 get_fibonacci() {
@@ -34,7 +34,7 @@ then
   exit 1
 fi
 
-echo "fac($1) = $(get_faculty $1)"
+echo "fac($1) = $(get_factorial $1)"
 echo "fib($1) = $(get_fibonacci $1)"
 echo "read() = $(get_file_content_length 'data/file.txt')"
 echo "get() = $(get_http_content_length 'https://example.com/')"

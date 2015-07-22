@@ -1,14 +1,14 @@
 program Main;
 uses SysUtils, FpHttpClient;
 
-function GetFaculty(Num : Integer) : LongInt;
+function GetFactorial(Num : Integer) : LongInt;
 begin
   if Num < 2 then
   begin
     Exit(1);
   end;
   
-  Exit(Num * GetFaculty(Num - 1));
+  Exit(Num * GetFactorial(Num - 1));
 end;
 
 function GetFibonacci(Num : Integer) : LongInt;
@@ -63,7 +63,7 @@ begin
     Halt(1);
   end;
   
-  WriteLn('fac(', Arg, ') = ', GetFaculty(Arg));
+  WriteLn('fac(', Arg, ') = ', GetFactorial(Arg));
   WriteLn('fib(', Arg, ') = ', GetFibonacci(Arg));
   WriteLn('read() = ', GetFileContentLength('data/file.txt'));
   // TODO: implement HTTPS request
