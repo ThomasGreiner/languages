@@ -3,28 +3,28 @@ using System.IO;
 using System.Net;
 
 class MainClass {
-  private static long Fac(long num) {
+  private static long GetFaculty(long num) {
     if (num < 2) {
       return 1;
     }
     
-    return num * Fac(num - 1);
+    return num * GetFaculty(num - 1);
   }
   
-  private static long Fib(long num) {
+  private static long GetFibonacci(long num) {
     if (num < 3) {
       return 1;
     }
     
-    return Fib(num - 1) + Fib(num - 2);
+    return GetFibonacci(num - 1) + GetFibonacci(num - 2);
   }
   
-  private static long Read(string path) {
+  private static long GetFileContentLength(string path) {
     string content = File.ReadAllText(path);
     return content.Length;
   }
   
-  private static long Get(string url) {
+  private static long GetHttpContentLength(string url) {
     // accept all certificates
     ServicePointManager.ServerCertificateValidationCallback += delegate {
       return true;
@@ -42,9 +42,9 @@ class MainClass {
       throw new ArgumentException(string.Format("Negative number: {0}", arg));
     }
     
-    Console.WriteLine("Fac({0}) = {1}", arg, Fac(arg));
-    Console.WriteLine("Fib({0}) = {1}", arg, Fib(arg));
-    Console.WriteLine("Read() = {0}", Read("data/file.txt"));
-    Console.WriteLine("Get() = {0}", Get("https://www.example.com/"));
+    Console.WriteLine("fac({0}) = {1}", arg, GetFaculty(arg));
+    Console.WriteLine("bib({0}) = {1}", arg, GetFibonacci(arg));
+    Console.WriteLine("read() = {0}", GetFileContentLength("data/file.txt"));
+    Console.WriteLine("get() = {0}", GetHttpContentLength("https://www.example.com/"));
   }
 }

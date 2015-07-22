@@ -1,27 +1,27 @@
 program Main;
 uses SysUtils, FpHttpClient;
 
-function Fac(Num : Integer) : LongInt;
+function GetFaculty(Num : Integer) : LongInt;
 begin
   if Num < 2 then
   begin
     Exit(1);
   end;
   
-  Exit(Num * Fac(Num - 1));
+  Exit(Num * GetFaculty(Num - 1));
 end;
 
-function Fib(Num : Integer) : LongInt;
+function GetFibonacci(Num : Integer) : LongInt;
 begin
   if Num < 3 then
   begin
     Exit(1);
   end;
   
-  Exit(Fib(Num - 1) + Fib(Num - 2));
+  Exit(GetFibonacci(Num - 1) + GetFibonacci(Num - 2));
 end;
 
-function Read(Path : String) : LongInt;
+function GetFileContentLength(Path : String) : LongInt;
 var F : TextFile;
     Line : String;
     Len : LongInt;
@@ -40,7 +40,7 @@ begin
   Exit(Len);
 end;
 
-function Get(Url : String) : LongInt;
+function GetHttpContentLength(Url : String) : LongInt;
 var Content : UnicodeString;
 begin
   with TFPHttpClient.Create(Nil) do
@@ -63,9 +63,9 @@ begin
     Halt(1);
   end;
   
-  WriteLn('fac(', Arg, ') = ', Fac(Arg));
-  WriteLn('fib(', Arg, ') = ', Fib(Arg));
-  WriteLn('read() = ', Read('data/file.txt'));
+  WriteLn('fac(', Arg, ') = ', GetFaculty(Arg));
+  WriteLn('fib(', Arg, ') = ', GetFibonacci(Arg));
+  WriteLn('read() = ', GetFileContentLength('data/file.txt'));
   // TODO: implement HTTPS request
-  WriteLn('get() = ', Get('http://example.com/'));
+  WriteLn('get() = ', GetHttpContentLength('http://example.com/'));
 end.

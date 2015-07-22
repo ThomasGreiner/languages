@@ -26,23 +26,23 @@ public class Main {
     return content.toString().length();
   }
   
-  private static long fac(long num) {
+  private static long getFaculty(long num) {
     if (num < 2) {
       return 1;
     }
     
-    return num * fac(num - 1);
+    return num * getFaculty(num - 1);
   }
   
-  private static long fib(long num) {
+  private static long getFibonacci(long num) {
     if (num < 3) {
       return 1;
     }
     
-    return fib(num - 1) + fib(num - 2);
+    return getFibonacci(num - 1) + getFibonacci(num - 2);
   }
   
-  private static long read(String path) {
+  private static long getFileContentLength(String path) {
     try {
       File file = new File(path);
       FileReader reader = new FileReader(file);
@@ -53,7 +53,7 @@ public class Main {
     }
   }
   
-  private static long get(String urlString) {
+  private static long getHttpContentLength(String urlString) {
     try {
       URL url = new URL(urlString);
       HttpURLConnection conn = (HttpURLConnection)url.openConnection();
@@ -74,9 +74,9 @@ public class Main {
       throw new IllegalArgumentException("Negative number: " + arg);
     }
     
-    System.out.println("fac(" + arg + ") = " + fac(arg));
-    System.out.println("fib(" + arg + ") = " + fib(arg));
-    System.out.println("read() = " + read("data/file.txt"));
-    System.out.println("get() = " + get("https://example.com/"));
+    System.out.println("fac(" + arg + ") = " + getFaculty(arg));
+    System.out.println("fib(" + arg + ") = " + getFibonacci(arg));
+    System.out.println("read() = " + getFileContentLength("data/file.txt"));
+    System.out.println("get() = " + getHttpContentLength("https://example.com/"));
   }
 }

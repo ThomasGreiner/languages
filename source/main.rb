@@ -1,26 +1,26 @@
 require "net/http"
 
-def fac(num)
+def get_faculty(num)
   if num < 2
     return 1
   end
   
-  num * fac(num - 1)
+  num * get_faculty(num - 1)
 end
 
-def fib(num)
+def get_fibonacci(num)
   if num < 3
     return 1
   end
   
-  fib(num - 1) + fib(num - 2)
+  get_fibonacci(num - 1) + get_fibonacci(num - 2)
 end
 
-def read(path)
+def get_file_content_length(path)
   File.read(path).length
 end
 
-def get(url)
+def get_http_content_length(url)
   url = URI.parse(url)
   req = Net::HTTP::Get.new(url.request_uri)
   http = Net::HTTP.new(url.host, url.port)
@@ -34,7 +34,7 @@ if arg < 0
   exit 1
 end
 
-puts "fac(#{arg}) = #{fac(arg)}"
-puts "fib(#{arg}) = #{fib(arg)}"
-puts "read() = #{read('data/file.txt')}"
-puts "get() = #{get('https://example.com/')}"
+puts "fac(#{arg}) = #{get_faculty(arg)}"
+puts "fib(#{arg}) = #{get_fibonacci(arg)}"
+puts "read() = #{get_file_content_length('data/file.txt')}"
+puts "get() = #{get_http_content_length('https://example.com/')}"

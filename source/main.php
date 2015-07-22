@@ -1,19 +1,19 @@
 <?php
-function fac($num) {
+function get_faculty($num) {
   if ($num < 2)
     return 1;
   
-  return $num * fac($num - 1);
+  return $num * get_faculty($num - 1);
 }
 
-function fib($num) {
+function get_fibonacci($num) {
   if ($num < 3)
     return 1;
   
-  return fib($num - 1) + fib($num - 2);
+  return get_fibonacci($num - 1) + get_fibonacci($num - 2);
 }
 
-function read($path) {
+function get_file_content_length($path) {
   return strlen(file_get_contents($path));
 }
 
@@ -23,8 +23,8 @@ if ($arg < 0) {
   exit(1);
 }
 
-echo "fac($arg) = ".fac($arg)."\n";
-echo "fib($arg) = ".fib($arg)."\n";
-echo "read() = ".read("data/file.txt")."\n";
-echo "get() = ".read("https://example.com/")."\n";
+echo "fac($arg) = ".get_faculty($arg)."\n";
+echo "fib($arg) = ".get_fibonacci($arg)."\n";
+echo "read() = ".get_file_content_length("data/file.txt")."\n";
+echo "get() = ".get_file_content_length("https://example.com/")."\n";
 ?>

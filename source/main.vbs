@@ -1,37 +1,37 @@
 Dim arg
 
-Function Fac(num)
+Function GetFaculty(num)
   If num < 2 Then
-    Fac = 1
+    GetFaculty = 1
     Exit Function
   End If
   
-  Fac = num * Fac(num - 1)
+  GetFaculty = num * GetFaculty(num - 1)
 End Function
 
-Function Fib(num)
+Function GetFibonacci(num)
   If num < 3 Then
-    Fib = 1
+    GetFibonacci = 1
     Exit Function
   End If
   
-  Fib = Fib(num - 1) + Fib(num - 2)
+  GetFibonacci = GetFibonacci(num - 1) + GetFibonacci(num - 2)
 End Function
 
-Function Read(path)
+Function GetFileContentLength(path)
   Dim fso, file
   Set fso = CreateObject("Scripting.FileSystemObject")
   Set file = fso.OpenTextFile(path, 1)
-  Read = Len(file.ReadAll())
+  GetFileContentLength = Len(file.ReadAll())
   file.Close()
 End Function
 
-Function Open(url)
+Function GetHttpContentLength(url)
   Dim xhr
   Set xhr = CreateObject("MSXML2.XMLHTTP")
   xhr.Open "GET", url, false
   xhr.Send()
-  Open = Len(xhr.ResponseText)
+  GetHttpContentLength = Len(xhr.ResponseText)
 End Function
 
 arg = WScript.Arguments.Item(0)
@@ -40,7 +40,7 @@ If arg < 0 Then
   WScript.Quit(1) ' echo %errorlevel%
 End If
 
-Wscript.Echo("Fac(" & arg & ") = " & Fac(arg))
-Wscript.Echo("Fib(" & arg & ") = " & Fib(arg))
-Wscript.Echo("Read() = " & Read("data/file.txt"))
-Wscript.Echo("Open() = " & Open("https://example.com/"))
+Wscript.Echo("Fac(" & arg & ") = " & GetFaculty(arg))
+Wscript.Echo("Fib(" & arg & ") = " & GetFibonacci(arg))
+Wscript.Echo("Read() = " & GetFileContentLength("data/file.txt"))
+Wscript.Echo("Open() = " & GetHttpContentLength("https://example.com/"))

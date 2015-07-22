@@ -1,23 +1,23 @@
-function fac(num) {
+function getFaculty(num) {
   if (num < 2)
     return 1;
   
-  return num * fac(num - 1);
+  return num * getFaculty(num - 1);
 }
 
-function fib(num) {
+function getFibonacci(num) {
   if (num < 3)
     return 1;
   
-  return fib(num - 1) + fib(num - 2);
+  return getFibonacci(num - 1) + getFibonacci(num - 2);
 }
 
-function read(path) {
+function getFileContentLength(path) {
   var content = require("fs").readFileSync(path, "utf-8");
   return content.length;
 }
 
-function get(url, callback) {
+function getHttpContentLength(url, callback) {
   require("https").get(url, function(resp) {
     var len = 0;
     resp.on("data", function(buf) {
@@ -35,9 +35,9 @@ if (arg < 0) {
   process.exit(1);
 }
 
-console.log("fac(%d) = %d", arg, fac(arg));
-console.log("fib(%d) = %d", arg, fib(arg));
-console.log("read() = %d", read("data/file.txt"));
-get("https://example.com/", function(len) {
+console.log("fac(%d) = %d", arg, getFaculty(arg));
+console.log("fib(%d) = %d", arg, getFibonacci(arg));
+console.log("read() = %d", getFileContentLength("data/file.txt"));
+getHttpContentLength("https://example.com/", function(len) {
   console.log("get() = %d", len);
 });

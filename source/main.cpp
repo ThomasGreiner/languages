@@ -7,23 +7,23 @@
 
 using namespace std;
 
-unsigned long fac(int num) {
+unsigned long getFaculty(int num) {
   if (num < 2) {
     return 1;
   }
   
-  return num * fac(num - 1);
+  return num * getFaculty(num - 1);
 }
 
-unsigned long fib(int num) {
+unsigned long getFibonacci(int num) {
   if (num < 3) {
     return 1;
   }
   
-  return fib(num - 1) + fib(num - 2);
+  return getFibonacci(num - 1) + getFibonacci(num - 2);
 }
 
-unsigned long read(string path) {
+unsigned long getFileContentLength(string path) {
   ifstream file(path.c_str());
   string content((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
   return content.length();
@@ -36,7 +36,7 @@ static size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream) {
 
 // TODO: use memory instead of temporary file
 // see http://curl.haxx.se/libcurl/c/getinmemory.html
-unsigned long get(string url) {
+unsigned long getHttpContentLength(string url) {
   CURL *curl;
   CURLcode resp;
   FILE *file;
@@ -62,7 +62,7 @@ unsigned long get(string url) {
     
     fclose(file);
     curl_easy_cleanup(curl);
-    return read(filename);
+    return getFileContentLength(filename);
   }
   return 0;
 }
@@ -81,9 +81,9 @@ int main(int argc, char* argv[])
     return 1;
   }
   
-  cout << "fac(" << arg << ") = " << fac(arg) << endl;
-  cout << "fib(" << arg << ") = " << fib(arg) << endl;
-  cout << "read() = " << read("data/file.txt") << endl;
-  cout << "get() = " << get("https://example.com/") << endl;
+  cout << "fac(" << arg << ") = " << getFaculty(arg) << endl;
+  cout << "fib(" << arg << ") = " << getFibonacci(arg) << endl;
+  cout << "read() = " << getFileContentLength("data/file.txt") << endl;
+  cout << "get() = " << getHttpContentLength("https://example.com/") << endl;
   return 0;
 }

@@ -1,24 +1,24 @@
 use LWP::Simple;
 
-sub Fac {
+sub get_faculty {
   my $num = $_[0];
   if ($num < 2) {
     return 1;
   }
   
-  return $num * Fac($num - 1);
+  return $num * get_faculty($num - 1);
 }
 
-sub Fib {
+sub get_fibonacci {
   my $num = $_[0];
   if ($num < 3) {
     return 1;
   }
   
-  return Fib($num - 1) + Fib($num - 2);
+  return get_fibonacci($num - 1) + get_fibonacci($num - 2);
 }
 
-sub Read {
+sub get_file_content_length {
   open(FILE, $_[0]) or return -1;
   my $content = do {
     local $/;
@@ -29,7 +29,7 @@ sub Read {
   return length($content);
 }
 
-sub Get {
+sub get_http_content_length {
   $content = get($_[0]) or return -1;
   return length($content);
 }
@@ -40,7 +40,7 @@ if ($arg < 0) {
   exit 1;
 }
 
-print "fac($arg) = @{[Fac($arg)]}\n";
-print "fib($arg) = @{[Fib($arg)]}\n";
-print "read() = @{[Read('data/file.txt')]}\n";
-print "get() = @{[Get('https://example.com/')]}\n";
+print "fac($arg) = @{[get_faculty($arg)]}\n";
+print "fib($arg) = @{[get_fibonacci($arg)]}\n";
+print "read() = @{[get_file_content_length('data/file.txt')]}\n";
+print "get() = @{[get_http_content_length('https://example.com/')]}\n";

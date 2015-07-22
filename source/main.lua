@@ -1,29 +1,29 @@
 #!/usr/bin/env lua
 
-function fac(num)
+function get_faculty(num)
   if num < 2 then
     return 1
   end
   
-  return num * fac(num - 1)
+  return num * get_faculty(num - 1)
 end
 
-function fib(num)
+function get_fibonacci(num)
   if num < 3 then
     return 1
   end
   
-  return fib(num - 1) + fib(num - 2)
+  return get_fibonacci(num - 1) + get_fibonacci(num - 2)
 end
 
-function read(path)
+function get_file_content_length(path)
   local file = io.open(path, "r")
   local content = file:read("*all")
   file:close()
   return content:len()
 end
 
-function open(url)
+function get_http_content_length(url)
   -- TODO: NYI
   return -1
 end
@@ -34,7 +34,7 @@ if num < 0 then
   os.exit(1)
 end
 
-print("fac("..num..") = "..fac(num))
-print("fib("..num..") = "..fib(num))
-print("read() = "..read("data/file.txt"))
-print("open() = "..open("https://example.com/"))
+print("fac("..num..") = "..get_faculty(num))
+print("fib("..num..") = "..get_fibonacci(num))
+print("read() = "..get_file_content_length("data/file.txt"))
+print("open() = "..get_http_content_length("https://example.com/"))

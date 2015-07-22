@@ -7,25 +7,25 @@ use std::fs::File;
 use std::io::Read;
 use std::process;
 
-fn fac(num: isize) -> isize {
+fn get_faculty(num: isize) -> isize {
   let ord = num.cmp(&2);
   if ord == Ordering::Less {
     return 1;
   } else {
-    return num * fac(num - 1);
+    return num * get_faculty(num - 1);
   }
 }
 
-fn fib(num: isize) -> isize {
+fn get_fibonacci(num: isize) -> isize {
   let ord = num.cmp(&3);
   if ord == Ordering::Less {
     return 1;
   } else {
-    return fib(num - 1) + fib(num - 2);
+    return get_fibonacci(num - 1) + get_fibonacci(num - 2);
   }
 }
 
-fn read(path: &'static str) -> u64 {
+fn get_file_content_length(path: &'static str) -> u64 {
   let file = match File::open(path) {
     Ok(file) => file,
     Err(err) => panic!("{}", err),
@@ -37,7 +37,7 @@ fn read(path: &'static str) -> u64 {
   return metadata.len();
 }
 
-fn get(url: &'static str) -> usize {
+fn get_http_content_length(url: &'static str) -> usize {
   let mut client = Client::new();
   let mut response = match client.get(url).send() {
     Ok(response) => response,
@@ -61,8 +61,8 @@ fn main() {
     process::exit(1);
   }
   
-  println!("fac({0:?}) = {1:}", arg, fac(arg));
-  println!("fib({0:?}) = {1:}", arg, fib(arg));
-  println!("read() = {0:}", read("data/file.txt"));
-  println!("get() = {0:}", get("https://example.com/"));
+  println!("fac({0:?}) = {1:}", arg, get_faculty(arg));
+  println!("fib({0:?}) = {1:}", arg, get_fibonacci(arg));
+  println!("read() = {0:}", get_file_content_length("data/file.txt"));
+  println!("get() = {0:}", get_http_content_length("https://example.com/"));
 }
