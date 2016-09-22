@@ -24,6 +24,7 @@ LANGUAGES:
   rb    Ruby
   rs    Rust
   sh    Bash
+  ts    TypeScript (JavaScript)
   vbs   VBScript
 EOF
 }
@@ -105,6 +106,14 @@ case $lang in
     ;;
   sh)
     bash source/main.sh $arg
+    ;;
+  ts)
+    mkdir -p tmp
+    cd tmp
+    tsd install node > /dev/null
+    cd ..
+    tsc --outFile bin/ts source/main.ts
+    node bin/ts $arg
     ;;
   vbs)
     echo "Run \`cscript source/main.vbs $arg\` under Windows"

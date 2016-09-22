@@ -33,6 +33,8 @@ Note: Unless otherwise noted, the following requirements are for running within 
     - http: `cabal update && cabal install http`
 - Java (javac, jar)
 - JavaScript (node)
+  - TypeScript (tsc)
+    - tsd: `npm install -g tsd`
 - Lua (lua)
 - Pascal (pc)
     - fcl-web: `apt-get install fp-units-fcl`
