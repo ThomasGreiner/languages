@@ -4,6 +4,7 @@
 2. n-th number in the Fibonacci sequence
 3. content length of a local file: [data/file.txt](data/file.txt)
 4. content length of a remote file: [https://example.com/](https://example.com/)
+5. comma-separated, ascending list of function arguments: "He", "l", "10", "W", "0", "r", "l", "d"
 
 ## Expected output
 
@@ -12,6 +13,7 @@ fac(12) = 479001600
 fib(12) = 144
 read() = 15
 get() = 1270
+sort() = 0,10,He,W,d,l,l,r
 ```
 
 ## Languages

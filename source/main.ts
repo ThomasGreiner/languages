@@ -31,16 +31,20 @@ function getHttpContentLength(url: string, callback: Function): void {
   });
 }
 
+function sortArguments(...args: string[]): string[] {
+  return args.sort();
+}
+
 var arg = parseInt(process.argv[2], 10);
 if (arg < 0) {
   console.error("Negative number: %s", arg);
   process.exit(1);
 }
 
-// TODO: read user input
 console.log("fac(%d) = %d", arg, getFactorial(arg));
 console.log("fib(%d) = %d", arg, getFibonacci(arg));
 console.log("read() = %d", getFileContentLength("data/file.txt"));
-getHttpContentLength("https://example.com/", function(len) {
+getHttpContentLength("https://example.com/", function(len: number) {
   console.log("get() = %d", len);
 });
+console.log("sort() = %s", sortArguments("He", "l", "10", "W", "0", "r", "l", "d"));

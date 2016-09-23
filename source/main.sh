@@ -28,6 +28,12 @@ get_http_content_length() {
   echo $(curl -s $1 | wc -m)
 }
 
+sort_arguments() {
+  echo $(for var in "$@"; do
+    echo "$var"
+  done | LC_COLLATE=C sort) | sed 's/,//g' | sed 's/ /,/g'
+}
+
 if [[ $1 -lt 0 ]]
 then
   echo "Negative number: $1"
@@ -38,3 +44,4 @@ echo "fac($1) = $(get_factorial $1)"
 echo "fib($1) = $(get_fibonacci $1)"
 echo "read() = $(get_file_content_length 'data/file.txt')"
 echo "get() = $(get_http_content_length 'https://example.com/')"
+echo "sort() = $(sort_arguments 'He', 'l', '10', 'W', '0', 'r', 'l', 'd')"

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 
 public class Main {
   private static final String NL = System.getProperty("line.separator");
@@ -66,6 +67,14 @@ public class Main {
     }
   }
   
+  private static String sortArguments(String ... args) {
+    Arrays.sort(args);
+    return Arrays.toString(args)
+      .replace("[", "")
+      .replace("]", "")
+      .replace(" ", "");
+  }
+  
   public static void main(String[] args)
   throws IllegalArgumentException {
     long arg = Long.parseLong(args[0]);
@@ -78,5 +87,6 @@ public class Main {
     System.out.println("fib(" + arg + ") = " + getFibonacci(arg));
     System.out.println("read() = " + getFileContentLength("data/file.txt"));
     System.out.println("get() = " + getHttpContentLength("https://example.com/"));
+    System.out.println("sort() = " + sortArguments("He", "l", "10", "W", "0", "r", "l", "d"));
   }
 }

@@ -29,6 +29,11 @@ function getHttpContentLength(url, callback) {
   });
 }
 
+function sortArguments() {
+  var arr = Array.prototype.slice.call(arguments);
+  return arr.sort();
+}
+
 var arg = process.argv[2];
 if (arg < 0) {
   console.error("Negative number: %s", arg);
@@ -41,3 +46,4 @@ console.log("read() = %d", getFileContentLength("data/file.txt"));
 getHttpContentLength("https://example.com/", function(len) {
   console.log("get() = %d", len);
 });
+console.log("sort() = %s", sortArguments("He", "l", "10", "W", "0", "r", "l", "d"));
