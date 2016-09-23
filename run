@@ -110,9 +110,10 @@ case $lang in
   ts)
     mkdir -p tmp
     cd tmp
-    tsd install node > /dev/null
+    tsd install node es6-promise > /dev/null
     cd ..
-    tsc --outFile bin/ts source/main.ts
+    tsc --outDir tmp source/main.ts
+    mv tmp/main.js bin/ts
     node bin/ts $arg
     ;;
   vbs)

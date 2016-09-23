@@ -1,6 +1,12 @@
 /// <reference path="../tmp/typings/node/node.d.ts" />
+/// <reference path="../tmp/typings/es6-promise/es6-promise.d.ts" />
 
-function getFactorial(num: number) {
+"use strict";
+
+import * as fs from "fs";
+import * as https from "https";
+
+function getFactorial(num: number): number {
   if (num < 2)
     return 1;
   
@@ -15,36 +21,36 @@ function getFibonacci(num: number): number {
 }
 
 function getFileContentLength(path: string): number {
-  var content = require("fs").readFileSync(path, "utf-8");
+  let content = fs.readFileSync(path, "utf8");
   return content.length;
 }
 
-function getHttpContentLength(url: string, callback: Function): void {
-  require("https").get(url, function(resp) {
-    var len = 0;
-    resp.on("data", function(buf) {
-      len += buf.length;
-    });
-    resp.on("end", function() {
-      callback(len);
+function getHttpContentLength(url: string): Promise<number> {
+  return new Promise((resolve) => {
+    https.get(url, (resp) => {
+      let len = 0;
+      resp.on("data", (buf) => {
+        len += buf.length;
+      });
+      resp.on("end", () => {
+        resolve(len);
+      });
     });
   });
 }
 
-function sortArguments(...args: string[]): string[] {
-  return args.sort();
-}
+let sortArguments = (...args: string[]): string[] => args.sort();
 
-var arg = parseInt(process.argv[2], 10);
+let arg = parseInt(process.argv[2], 10);
 if (arg < 0) {
-  console.error("Negative number: %s", arg);
+  console.error(`Negative number: ${arg}`);
   process.exit(1);
 }
 
-console.log("fac(%d) = %d", arg, getFactorial(arg));
-console.log("fib(%d) = %d", arg, getFibonacci(arg));
-console.log("read() = %d", getFileContentLength("data/file.txt"));
-getHttpContentLength("https://example.com/", function(len: number) {
-  console.log("get() = %d", len);
+console.log(`fac(${arg}) = ${getFactorial(arg)}`);
+console.log(`fib(${arg}) = ${getFibonacci(arg)}`);
+console.log(`read() = ${getFileContentLength("data/file.txt")}`);
+getHttpContentLength("https://example.com/").then((len: number) => {
+  console.log(`get() = ${len}`);
 });
-console.log("sort() = %s", sortArguments("He", "l", "10", "W", "0", "r", "l", "d"));
+console.log(`sort() = ${sortArguments("He", "l", "10", "W", "0", "r", "l", "d")}`);

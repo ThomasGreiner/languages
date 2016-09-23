@@ -1,3 +1,8 @@
+"use strict";
+
+const fs = require("fs");
+const https = require("https");
+
 function getFactorial(num) {
   if (num < 2)
     return 1;
@@ -13,37 +18,36 @@ function getFibonacci(num) {
 }
 
 function getFileContentLength(path) {
-  var content = require("fs").readFileSync(path, "utf-8");
+  let content = fs.readFileSync(path, "utf8");
   return content.length;
 }
 
-function getHttpContentLength(url, callback) {
-  require("https").get(url, function(resp) {
-    var len = 0;
-    resp.on("data", function(buf) {
-      len += buf.length;
-    });
-    resp.on("end", function() {
-      callback(len);
+function getHttpContentLength(url) {
+  return new Promise((resolve) => {
+    https.get(url, (resp) => {
+      let len = 0;
+      resp.on("data", (buf) => {
+        len += buf.length;
+      });
+      resp.on("end", () => {
+        resolve(len);
+      });
     });
   });
 }
 
-function sortArguments() {
-  var arr = Array.prototype.slice.call(arguments);
-  return arr.sort();
-}
+let sortArguments = (...args) => args.sort();
 
-var arg = process.argv[2];
+let arg = process.argv[2];
 if (arg < 0) {
-  console.error("Negative number: %s", arg);
+  console.error(`Negative number: ${arg}`);
   process.exit(1);
 }
 
-console.log("fac(%d) = %d", arg, getFactorial(arg));
-console.log("fib(%d) = %d", arg, getFibonacci(arg));
-console.log("read() = %d", getFileContentLength("data/file.txt"));
-getHttpContentLength("https://example.com/", function(len) {
-  console.log("get() = %d", len);
+console.log(`fac(${arg}) = ${getFactorial(arg)}`);
+console.log(`fib(${arg}) = ${getFibonacci(arg)}`);
+console.log(`read() = ${getFileContentLength("data/file.txt")}`);
+getHttpContentLength("https://example.com/").then((len) => {
+  console.log(`get() = ${len}`);
 });
-console.log("sort() = %s", sortArguments("He", "l", "10", "W", "0", "r", "l", "d"));
+console.log(`sort() = ${sortArguments("He", "l", "10", "W", "0", "r", "l", "d")}`);
