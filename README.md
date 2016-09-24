@@ -24,6 +24,10 @@ Note: Unless otherwise noted, the following requirements are for running within 
     - Linux 64-bit
 - Bash (bash)
     - curl: `apt-get install curl`
+- BASIC (fbc)
+    - fbc:
+        - download from http://www.freebasic.net/get
+        - extract to lib/FreeBASIC
 - Befunge (bef)
     - bef: `git clone https://github.com/catseye/Befunge-93.git lib/Befunge-93 && cd lib/Befunge-93 && make`
 - C++ (g++)
