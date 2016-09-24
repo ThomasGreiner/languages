@@ -1,5 +1,5 @@
-/// <reference path="../tmp/typings/node/node.d.ts" />
-/// <reference path="../tmp/typings/es6-promise/es6-promise.d.ts" />
+/// <reference path="../lib/typings/node/node.d.ts" />
+/// <reference path="../lib/typings/es6-promise/es6-promise.d.ts" />
 
 "use strict";
 

@@ -114,8 +114,8 @@ case $lang in
     bash source/main.sh $arg
     ;;
   ts)
-    mkdir -p tmp
-    cd tmp
+    mkdir -p lib
+    cd lib
     tsd install node es6-promise > /dev/null
     cd ..
     tsc --outDir tmp source/main.ts
