@@ -47,6 +47,7 @@ Note: Unless otherwise noted, the following requirements are for running within 
 - Perl (perl)
 - PHP (php)
 - Python (python)
+- R (Rscript)
 - Ruby (ruby)
 - Rust (rustc)
     - cargo

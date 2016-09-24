@@ -22,6 +22,7 @@ LANGUAGES:
   php   PHP
   pl    Perl
   py    Python
+  r     R
   rb    Ruby
   rs    Rust
   sh    Bash
@@ -101,6 +102,12 @@ case $lang in
     ;;
   py)
     python source/main.py $arg
+    ;;
+  r)
+    export R_LIBS="lib/cran"
+    mkdir -p $R_LIBS
+    R -q -e 'install.packages("httr", repos = "https://cran.uni-muenster.de")' > /dev/null 2> /dev/null
+    Rscript source/main.R $arg
     ;;
   rb)
     ruby source/main.rb $arg
