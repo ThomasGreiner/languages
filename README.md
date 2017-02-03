@@ -35,6 +35,7 @@ Note: Unless otherwise noted, the following requirements are for running within 
 - C# (mcs)
 - Crystal (crystal)
     - crystal: https://crystal-lang.org/docs/installation/from_a_targz.html
+    - libssl-dev: `apt-get install libssl-dev`
 - Go (go)
 - Haskell (ghc)
     - cabal: `apt-get install cabal-install`
@@ -56,5 +57,7 @@ Note: Unless otherwise noted, the following requirements are for running within 
     - libssl-dev: `apt-get install libssl-dev`
     - hyper: dependency needs to be resolved manually to avoid [Cargo conventions](http://doc.crates.io/guide.html#cargo-conventions)
     `git clone https://github.com/hyperium/hyper lib/hyper && cd lib/hyper && git checkout tags/v0.5.0 && cargo build`
+- Swift (swift)
+    - swift: https://swift.org/download/#releases
 - VBScript (cscript)
     - Windows

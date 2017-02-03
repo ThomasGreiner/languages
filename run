@@ -124,6 +124,9 @@ case $lang in
   sh)
     bash source/main.sh $arg
     ;;
+  swift)
+    lib/swift/usr/bin/swift source/main.swift $arg
+    ;;
   ts)
     mkdir -p lib
     cd lib
