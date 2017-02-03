@@ -12,6 +12,7 @@ LANGUAGES:
   bas   BASIC
   bf    Befunge
   cpp   C++
+  cr    Crystal
   cs    C#
   go    Go
   hs    Haskell
@@ -52,6 +53,9 @@ case $lang in
     ;;
   bf)
     lib/Befunge-93/bin/bef -q $arg source/main
+    ;;
+  cr)
+    lib/crystal/bin/crystal source/main.cr $arg
     ;;
   cpp)
     mkdir -p bin

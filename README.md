@@ -33,6 +33,8 @@ Note: Unless otherwise noted, the following requirements are for running within 
 - C++ (g++)
     - libcurl: `apt-get install libcurl4-openssl-dev`
 - C# (mcs)
+- Crystal (crystal)
+    - crystal: https://crystal-lang.org/docs/installation/from_a_targz.html
 - Go (go)
 - Haskell (ghc)
     - cabal: `apt-get install cabal-install`
