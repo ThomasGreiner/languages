@@ -1,7 +1,3 @@
-// Variables are hardcoded due to lack of IO
-var arg = 12;
-var TEXT = "foo";
-
 function getFactorial(num) {
   if (num < 2)
     return 1;
@@ -17,11 +13,11 @@ function getFibonacci(num) {
 }
 
 function getFileContentLength(path) {
-  return TEXT.length;
+  return PRE_FILE_TEXT.length;
 }
 
 function getHttpContentLength(url, callback) {
-  callback(TEXT.length);
+  callback(PRE_HTTP_TEXT.length);
 }
 
 function sortArguments() {
@@ -29,6 +25,7 @@ function sortArguments() {
   return args.sort();
 }
 
+var arg = PRE_ARG;
 if (arg < 0) {
   print("Negative number: " + arg);
   quit();

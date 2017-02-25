@@ -42,6 +42,15 @@ then
   exit 1
 fi
 
+# Inject data directly into code if it lacks I/O support
+preprocess() {
+echo "
+#define PRE_ARG $arg
+#define PRE_FILE_TEXT \"$(cat data/file.txt)\"
+#define PRE_HTTP_TEXT \"\"
+" | cat - "$1" | cpp -E -P -o "$2"
+}
+
 case $lang in
   asm)
     mkdir -p tmp
@@ -101,13 +110,15 @@ case $lang in
     node source/main.js $arg
     ;;
   js15)
-    lib/jsshell/usr/bin/jsshell source/main.js15
+    preprocess source/main.js15 tmp/main.js15
+    lib/jsshell/usr/bin/jsshell tmp/main.js15
     ;;
   lisp)
     clisp source/main.lisp $arg
     ;;
   lua)
-    lua source/main.lua $arg
+    preprocess source/main.lua tmp/main.lua
+    lua tmp/main.lua $arg
     ;;
   pas)
     mkdir -p tmp bin

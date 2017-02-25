@@ -1,5 +1,3 @@
-#!/usr/bin/env lua
-
 function get_factorial(num)
   if num < 2 then
     return 1
@@ -24,8 +22,7 @@ function get_file_content_length(path)
 end
 
 function get_http_content_length(url)
-  -- TODO: NYI
-  return -1
+  return PRE_HTTP_TEXT:len()
 end
 
 local num = tonumber(arg[1])
