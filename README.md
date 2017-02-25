@@ -36,6 +36,8 @@ Note: Unless otherwise noted, the following requirements are for running within 
 - Crystal (crystal)
     - crystal: https://crystal-lang.org/docs/installation/from_a_targz.html
     - libssl-dev: `apt-get install libssl-dev`
+- Dart
+    - dart: https://www.dartlang.org/install/archive
 - Go (go)
 - Haskell (ghc)
     - cabal: `apt-get install cabal-install`

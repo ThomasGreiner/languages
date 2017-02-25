@@ -15,6 +15,7 @@ LANGUAGES:
   cpp     C++
   cr      Crystal
   cs      C#
+  dart    Dart
   go      Go
   hs      Haskell
   java    Java
@@ -72,6 +73,9 @@ case $lang in
     mkdir -p bin
     mcs -out:bin/cs source/main.cs
     bin/cs $arg
+    ;;
+  dart)
+    lib/dart-sdk/bin/dart source/main.dart $arg
     ;;
   go)
     go run source/main.go $arg
