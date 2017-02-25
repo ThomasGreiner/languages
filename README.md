@@ -42,6 +42,7 @@ Note: Unless otherwise noted, the following requirements are for running within 
     - http: `cabal update && cabal install http`
 - Java (javac, jar)
 - JavaScript (node)
+  - CoffeeScript (coffee)
   - JavaScript 1.5 (jsshell)
     - jsshell: http://ftp.mozilla.org/pub/js/older-packages/libjs-1.5rc4-3.i386.rpm
   - TypeScript (tsc)

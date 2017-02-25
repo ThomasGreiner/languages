@@ -8,28 +8,29 @@ cat << EOF
 Usage: $0 <language> <integer>
 
 LANGUAGES:
-  asm   Assembly
-  bas   BASIC
-  bf    Befunge
-  cpp   C++
-  cr    Crystal
-  cs    C#
-  go    Go
-  hs    Haskell
-  java  Java
-  js    JavaScript
-  js15  JavaScript 1.5
-  lua   Lua
-  pas   Pascal
-  php   PHP
-  pl    Perl
-  py    Python
-  r     R
-  rb    Ruby
-  rs    Rust
-  sh    Bash
-  ts    TypeScript (JavaScript)
-  vbs   VBScript
+  asm     Assembly
+  bas     BASIC
+  bf      Befunge
+  coffee  CoffeeScript (JavaScript)
+  cpp     C++
+  cr      Crystal
+  cs      C#
+  go      Go
+  hs      Haskell
+  java    Java
+  js      JavaScript
+  js15    JavaScript 1.5
+  lua     Lua
+  pas     Pascal
+  php     PHP
+  pl      Perl
+  py      Python
+  r       R
+  rb      Ruby
+  rs      Rust
+  sh      Bash
+  ts      TypeScript (JavaScript)
+  vbs     VBScript
 EOF
 }
 
@@ -55,14 +56,17 @@ case $lang in
   bf)
     lib/Befunge-93/bin/bef -q $arg source/main
     ;;
-  cr)
-    lib/crystal/bin/crystal source/main.cr $arg
+  coffee)
+    coffee source/main.coffee $arg
     ;;
   cpp)
     mkdir -p bin
     g++ source/main.cpp -o bin/cpp -lcurl
     mkdir -p tmp
     bin/cpp $arg
+    ;;
+  cr)
+    lib/crystal/bin/crystal source/main.cr $arg
     ;;
   cs)
     mkdir -p bin
