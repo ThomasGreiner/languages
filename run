@@ -21,6 +21,7 @@ LANGUAGES:
   java    Java
   js      JavaScript
   js15    JavaScript 1.5
+  lisp    Lisp
   lua     Lua
   pas     Pascal
   php     PHP
@@ -101,6 +102,9 @@ case $lang in
     ;;
   js15)
     lib/jsshell/usr/bin/jsshell source/main.js15
+    ;;
+  lisp)
+    clisp source/main.lisp $arg
     ;;
   lua)
     lua source/main.lua $arg
