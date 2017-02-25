@@ -18,6 +18,7 @@ LANGUAGES:
   hs    Haskell
   java  Java
   js    JavaScript
+  js15  JavaScript 1.5
   lua   Lua
   pas   Pascal
   php   PHP
@@ -89,6 +90,9 @@ case $lang in
     ;;
   js)
     node source/main.js $arg
+    ;;
+  js15)
+    lib/jsshell/usr/bin/jsshell source/main.js15
     ;;
   lua)
     lua source/main.lua $arg

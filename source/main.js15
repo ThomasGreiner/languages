@@ -1,0 +1,43 @@
+// Variables are hardcoded due to lack of IO
+var arg = 12;
+var TEXT = "foo";
+
+function getFactorial(num) {
+  if (num < 2)
+    return 1;
+  
+  return num * getFactorial(num - 1);
+}
+
+function getFibonacci(num) {
+  if (num < 3)
+    return 1;
+  
+  return getFibonacci(num - 1) + getFibonacci(num - 2);
+}
+
+function getFileContentLength(path) {
+  return TEXT.length;
+}
+
+function getHttpContentLength(url, callback) {
+  callback(TEXT.length);
+}
+
+function sortArguments() {
+  var args = Array.prototype.slice.call(arguments);
+  return args.sort();
+}
+
+if (arg < 0) {
+  print("Negative number: " + arg);
+  quit();
+}
+
+print("fac(" + arg + ") = " + getFactorial(arg));
+print("fib(" + arg + ") = " + getFibonacci(arg));
+print("read() = " + getFileContentLength("data/file.txt"));
+getHttpContentLength("https://example.com/", function(len) {
+  print("get() = " + len);
+});
+print("sort() = " + sortArguments("He", "l", "10", "W", "0", "r", "l", "d"));
